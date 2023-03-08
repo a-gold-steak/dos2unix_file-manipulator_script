@@ -28,10 +28,15 @@ The following are screenshots of the menu:
 ## Demo
 The following demonstrates a file being renamed with this script:
 - File Selection
+
 ![Screenshot](demo_1.png)
+
 - Option Selection
+
 ![Screenshot](demo_2.png)
+
 - Execution and End Result
+
 ![Screenshot](demo_3.png)
 
 ## Improvements
