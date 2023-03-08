@@ -14,13 +14,13 @@ This script is great for people who are familiar with Windows systems and are in
 ## Menu Screenshots
 The following are screenshots of the menu:
 - Executing the Script
-<a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="cmdline_execution.png"/></a>
+<a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/screenshots"><img src="cmdline_execution.png"/></a>
 - Main Menu
 <a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="main_menu.png"/></a>
 - Available Options
 <a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="available_options.png"/></a>
 
-##Demo
+## Demo
 The following demonstrates a file being renamed with this script:
 - File Selection
 <a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="demo_1.png"/></a>
@@ -29,7 +29,7 @@ The following demonstrates a file being renamed with this script:
 - Execution and End Result
 <a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="demo_3.png"/></a>
 
-##Improvements
+## Improvements
 Here are some improvements that can be made in the future: 
 - An addition of an open function for pdf files or pictures
 - A printing function that prints files using this script 
