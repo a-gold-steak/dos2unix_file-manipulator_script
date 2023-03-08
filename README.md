@@ -5,8 +5,8 @@ Hello,
 
 This script selects a file and then takes a DOS/Windows command as the first parameter and performs the equivalent UNIX command.
 
-For example, in Windows command line when you want to move a file, you would execute `move C:\Users\username\Desktop\"cool movies.txt" C:\Users\username\Documents`. 
-In UNIX systems, you would execute the `mv /home/user/Documents/file1.txt /home/user/Desktop` to move the file1.txt file from the documents folder to the desktop. 
+For example, in Windows command line when you want to move a file, you would execute `move C:\Users\username\Desktop\"cool movies.txt" C:\Users\username\Documents` to move the *cool movies.txt* file from the Desktop to the Documents folder. 
+In UNIX systems, you would execute the `mv /home/user/Documents/file1.txt /home/user/Desktop` to move the *file1.txt* file from the documents folder to the desktop. 
 This script performs these type of functions for your files and outputs the UNIX command used so you can learn as you go. 
 
 This script is great for people who are familiar with Windows systems and are interested in learning how to navigate the command line, and manipulate files in UNIX systems. 
@@ -14,7 +14,7 @@ This script is great for people who are familiar with Windows systems and are in
 ## Menu Screenshots
 The following are screenshots of the menu:
 - Executing the Script
-<a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/screenshots"><img src="cmdline_execution.png"/></a>
+<a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="cmdline_execution.png"/></a>
 - Main Menu
 <a href="https://a-gold-steak.github.io/dos2unix_file-manipulator_script/"><img src="main_menu.png"/></a>
 - Available Options
