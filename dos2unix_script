@@ -1,0 +1,402 @@
+#!/bin/bash
+#By:Neff Cadena
+#Purpose: This script accepts DOS/Windows commands as the first parameter and performs the corresponding Linux command
+
+
+#Variables:
+#COMMAND = COMMAND THAT USER WANTS TO PERFORM
+#ARG1 = FIRST ARG FOR USER INPUTS
+#ARG2 = SECOND ARG FOR USER INPUTS
+#ARG3 = THIRD ARG FOR USER INPUTS
+
+
+#read arguments ...
+COMMAND=$1
+ARG1=$2 #filename is here - FILENAME
+ARG2=$3 #file destination is here - FILEDESTNAME
+ARG3=$4 #new filename is here - NEWFILENAME
+
+#verification function for ARG1
+verFuncExist1(){
+	if [[ -e "$ARG1" ]];  
+	then
+		printf " $ARG1 File Exists! \n " 
+		printf "==================== \n "
+	else
+		printf "File or Directory Does not Exist! Try Again! \n " 
+		1>/dev/null 2>/dev/null
+		exit 0
+	fi
+
+}
+
+#verification function for ARG2
+verFuncExist2(){
+	if [[ -e "$ARG2" ]];  
+	then
+		printf " $ARG2 File or Directory Exists! \n " 
+		printf "==================== \n "
+	else
+		printf "File or Directory Does not Exist! Try Again! \n " 
+		>/dev/null 2>/dev/null
+		exit 0
+	fi
+
+}
+
+#checks if overwriting file
+overwriteErr(){
+	set -o noclobber 1>/dev/null 2>/dev/null
+	echo one > $ARG1 1>/dev/null 2>/dev/null
+	echo two > $ARG2 1>/dev/null 2>/dev/null
+	
+	printf "Cannot Overwrite Existing File! Use ! to Force Overwrite! \n "
+	exit 0
+
+}
+
+
+#displays author name
+authorName(){
+	printf " \n "
+	printf "Cadena,Neff \n "
+	printf " \n "
+}
+
+#prints file contents
+printFile(){
+	verFuncExist1
+	cat "$ARG1"
+	printf " \n "
+	printf "File Printed! \n "
+	printf " \n "
+	printf "Linux Command Used: cat $ARG1 \n "
+	printf " \n "
+}
+
+#copys a file
+copyFile(){
+	verFuncExist1
+	read -p "Enter a File Destination Name With a COMPLETE Path That you Want Copied to: e.g.-> /home/user/documents " ARG2
+	verFuncExist2
+	printf "Copying $ARG1 ... to $ARG2 ... Please Wait... \n "
+	#overwriteErr
+
+	cp -i $ARG1 $ARG2
+	printf "File Copied! \n "
+	printf " \n "
+	printf "Linux Command Used: cp -i $ARG1 $ARG2 \n "
+	printf " \n "
+
+}
+
+#renames a file
+renameFile(){
+	verFuncExist1
+	read -p "Enter a New File Name: " ARG3
+	printf "Renaming $ARG1 ... to $ARG3 ... Please Wait... \n "
+	#overwriteErr
+
+	mv -i $ARG1 $ARG3
+	printf "File Renamed! \n "
+	printf " \n "
+	printf "Linux Command Used: mv -i $ARG1 $ARG3 \n "
+	printf " \n "
+
+}
+
+#moves a file
+moveFile(){
+	verFuncExist1
+	read -p "Enter a File Destination Name With COMPLETE Path That you Want Moved to: e.g.-> /home/user/documents " ARG2
+	verFuncExist2
+	printf "Moving $ARG1 ... to $ARG2 ... Please Wait... \n "
+	#overwriteErr
+
+	mv -i $ARG1 $ARG2
+	printf "File Moved! \n "
+	printf " \n "
+	printf "Linux Command Used: mv -i $ARG1 $ARG2 \n "
+	printf " \n "
+	
+
+}
+
+#deletes a file
+deleteFile(){
+	verFuncExist1
+	read -p "Are you Sure you Would Like to Delete This File? Type yes to Confirm or no to Cancel: " ARG2
+	if [[ $ARG2 == "yes" ]]
+	then
+
+		printf "Deleting $ARG1 ... Please Wait... \n "
+		#overwriteErr
+
+		rm -f $ARG1
+		printf "File Deleted! \n "
+		printf " \n "
+		printf "Linux Command Used: rm -f $ARG1 \n "
+		printf " \n "
+
+	else
+		printf "Canceled! \n "
+	fi
+
+}
+
+#prints help contents for operations
+helpCommandOp(){
+	printf "Supported Operation Commands: \n
+			   author - outputs author information \n
+			   print - outputs contents of file \n
+			   copy - copys a file to another directory \n
+			   ren - renames a file \n
+			   move - moves a file \n
+			   del - deletes a file \n 
+			   copy! - Forces copy of file \n 
+			   move! - Forces move of file \n 
+			   ren! - Forces rename of file \n
+			   help - outputs list of supported commands \n
+			   exit - exits program \n
+			   NOTE1: any time you want to exit, hold CTRL key and press C \n
+			   NOTE2: to select operation in menu, type corresponding number \n
+			   NOTE3: any time options are not viewable, press ENTER \n "
+
+}
+
+#prints help contents for file selection
+helpCommandSe(){
+	printf "Supported File Selection Commands: \n
+			   author - outputs author information \n
+			   help - outputs list of supported commands \n
+			   exit - exits program \n
+			   NOTE1: any time you want to exit, hold CTRL key and press C \n
+			   NOTE2: to select operation in menu, type corresponding number \n
+			   NOTE3: any time options are not viewable, press ENTER \n "
+
+}
+
+#force copys a file
+copyForce(){
+	verFuncExist1
+	printf "NOTE: This Command Forces Overwrite! \n "
+	read -p "Enter a File Destination Name With a COMPLETE Path That you Want Copied to: e.g.-> /home/user/documents " ARG2
+	verFuncExist2
+	printf "Copying $ARG1 ... to $ARG2 ... Please Wait... \n "
+
+	cp -f $ARG1 $ARG2
+	printf "File Copied! \n "
+	printf " \n "
+	printf "Linux Command Used: cp -f $ARG1 $ARG2 \n "
+	printf " \n "
+
+}
+
+#force moves a file
+moveForce(){
+	verFuncExist1
+	printf "NOTE: This Command Forces Overwrite! \n "
+	read -p "Enter a File Destination Name With COMPLETE Path That you Want Moved to: e.g.-> /home/user/documents " ARG2
+	verFuncExist2
+	printf "Moving $ARG1 ... to $ARG2 ... Please Wait... \n "
+
+	mv -f $ARG1 $ARG2
+	printf "File Moved! \n "
+	printf " \n "
+	printf "Linux Command Used: mv -f $ARG1 $ARG2 \n "
+	printf " \n "
+
+}
+
+#force renames a file
+renameForce(){
+	verFuncExist1
+	printf "NOTE: This Command Forces Overwrite! \n "
+	read -p "Enter a New File Name: " ARG3
+	printf "Renaming $ARG1 ... to $ARG3 ... Please Wait... \n "
+
+	mv -f $ARG1 $ARG3
+	printf "File Renamed! \n "
+	printf " \n "
+	printf "Linux Command Used: mv -f $ARG1 $ARG3 \n "
+	printf " \n "
+
+}
+
+#operation function
+operation(){
+
+#selects operation
+printf "\n"
+printf "SELECT OPERATION YOU WOULD LIKE TO PERFORM:"
+printf "\n"
+PS3="Select an Option: "
+
+select COMMAND in author print copy ren del move copy! move! ren! help exit
+do
+
+#Chooses a specific set of operations 
+case $COMMAND in
+	#prints author info
+	"author")
+
+		authorName
+
+		;;
+	#prints file contents
+	"print")
+
+		printFile
+		
+		;;
+	#copys a file
+	"copy")
+
+		copyFile
+		
+		;;
+	#renames a file
+	"ren")
+
+		renameFile
+		
+		;;
+	#moves a file
+	"move")
+
+		moveFile
+		
+		;;
+	#deletes a file
+	"del")
+
+		deleteFile
+		
+		;;
+	#outputs list of supported commands
+	"help")
+		
+		helpCommandOp
+
+		;;
+	#force copys a file
+	"copy!")
+
+		copyForce
+
+		;;
+	#force moves a file
+	"move!")
+		
+		moveForce
+
+		;;
+	#force renames a file
+	"ren!")
+		
+		renameForce
+
+		;;
+	#exits program
+	"exit")
+
+		break
+
+		;;
+	#default case 
+	*)
+		printf "Error, Please Try Again. Select 10)help for Supported Commands \n "
+esac
+done
+
+#successful escape code
+exit 0
+}
+
+#sorts files by name, age, or size
+sortFunc(){
+printf "\n"
+printf "HOW WOULD YOU LIKE TO SORT YOUR FILES?"
+printf "\n"
+PS3="Select an Option: "
+
+select COMMAND in sortName sortAge sortSize exit
+do 
+	case $COMMAND in
+		"sortName")
+
+			ls -l
+			printf "===================== \n "
+			ls
+			break
+
+			;;
+		"sortAge")
+
+			ls -lt
+			printf "===================== \n "
+			ls -t
+			break
+
+			;;
+		"sortSize")
+
+			ls -S -l
+			printf "===================== \n "
+			ls -S 
+			break
+
+			;;
+		"exit")
+			break
+			;;
+			*)
+			printf "Error, Please Try Again. Select an Option From Menu by Typing Corresponding Number \n "
+			;;
+	esac
+done
+
+}
+
+#selects file or directory
+printf "\n"
+printf "WELCOME TO FILE MANIPULATOR!(enter a number)"
+printf "\n"
+PS3="Select an Option: "
+
+select COMMAND in listFiles sortFiles help exit
+do
+	case $COMMAND in
+		"listFiles")
+			printf "\n"
+			printf "SELECT FILE OR DIRECTORY:"
+			printf "\n"
+			ARG1=$(ls .)
+			select ARG1 in ${ARG1[$@]}
+			do 	
+				operation
+				break
+			done
+			;;
+		"sortFiles")
+
+			sortFunc
+
+			;;
+		"help")
+
+			helpCommandSe
+
+			;;
+		"exit")
+			
+			break
+			;;
+		*)
+			printf "Error, Please Try Again. Select 2)help From Menu for Supported Commands \n "
+			;;
+	esac
+done
+
+#successful escape code
+exit 0
