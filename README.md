@@ -13,6 +13,7 @@ This script is great for people who are familiar with Windows systems and are in
 
 ## Menu Screenshots
 The following are screenshots of the menu:
+
 Executing the Script
 
 ![Screenshot](cmdline_execution.png)
@@ -27,6 +28,7 @@ Available Options
 
 ## Demo
 The following demonstrates a file being renamed with this script:
+
 File Selection
 
 ![Screenshot](demo_1.png)
