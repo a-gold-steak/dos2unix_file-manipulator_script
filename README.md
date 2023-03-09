@@ -13,29 +13,29 @@ This script is great for people who are familiar with Windows systems and are in
 
 ## Menu Screenshots
 The following are screenshots of the menu:
-- Executing the Script
+Executing the Script
 
 ![Screenshot](cmdline_execution.png)
 
-- Main Menu
+Main Menu
 
 ![Screenshot](main_menu.png)
 
-- Available Options
+Available Options
 
 ![Screenshot](available_options.png)
 
 ## Demo
 The following demonstrates a file being renamed with this script:
-- File Selection
+File Selection
 
 ![Screenshot](demo_1.png)
 
-- Option Selection
+Option Selection
 
 ![Screenshot](demo_2.png)
 
-- Execution and End Result
+Execution and End Result
 
 ![Screenshot](demo_3.png)
 
